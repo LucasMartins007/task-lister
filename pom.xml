@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>23</java.version>
 		<spring-cloud.version>2023.0.5</spring-cloud.version>
+		<jjwt-api.version>0.11.5</jjwt-api.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -50,6 +51,25 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<!-- JWT Support -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>${jjwt-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>${jjwt-api.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt-api.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
