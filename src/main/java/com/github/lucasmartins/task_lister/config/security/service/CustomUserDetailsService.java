@@ -1,4 +1,4 @@
-package com.github.lucasmartins.task_lister.config;
+package com.github.lucasmartins.task_lister.config.security.service;
 
 import com.github.lucasmartins.task_lister.domain.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;

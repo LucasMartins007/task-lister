@@ -1,5 +1,6 @@
-package com.github.lucasmartins.task_lister.config;
+package com.github.lucasmartins.task_lister.config.security.filter;
 
+import com.github.lucasmartins.task_lister.config.security.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,10 +33,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-
-        final String jwt = authHeader.substring(7); // Remove "Bearer "
+        final String jwt = authHeader.substring(7);
         final String username = jwtService.extractUsername(jwt);
-
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
             if (jwtService.isTokenValid(jwt, userDetails)) {
@@ -46,7 +45,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
-
         filterChain.doFilter(request, response);
     }
 

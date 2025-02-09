@@ -1,4 +1,4 @@
-package com.github.lucasmartins.task_lister.config;
+package com.github.lucasmartins.task_lister.config.security.service;
 
 import com.github.lucasmartins.task_lister.properties.SecurityProperties;
 import io.jsonwebtoken.Claims;
@@ -27,11 +27,12 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+        long expirationDate = System.currentTimeMillis() + securityProperties.getExpiration();
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + securityProperties.getExpiration()))
+                .setExpiration(new Date(expirationDate))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

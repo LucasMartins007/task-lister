@@ -11,5 +11,5 @@ public class SecurityProperties {
 
     private String secret;
 
-    private String expiration;
+    private int expiration;
 }
