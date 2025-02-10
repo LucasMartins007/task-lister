@@ -14,5 +14,7 @@ spring:
 
   security:
     jwt:
-      secret: ${SECRET_KEY}
-      expiration: ${EXPIRATION_TIME}
+      secret: ${SECRET_API_KEY}
+      expiration-minutes: 15
+      expiration-factor: 60
+      expiration-multiplier: 1000
