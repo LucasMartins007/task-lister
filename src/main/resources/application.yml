@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${HOST}:5432/${POSTGRES_DB}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database: postgresql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+  security:
+    jwt:
+      secret: ${SECRET_API_KEY}
+      expiration-minutes: 15
+      expiration-factor: 60
+      expiration-multiplier: 1000
